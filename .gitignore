@@ -39,3 +39,6 @@ out/
 *.log
 
 *.class
+
+### local config ###
+application-local.properties

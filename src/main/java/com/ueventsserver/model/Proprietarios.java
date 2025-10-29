@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
 @Table(name = "proprietarios")
 @Data
@@ -20,6 +18,6 @@ public class Proprietarios {
     @JoinColumn(name = "organizacao", referencedColumnName = "id", nullable = false)
     public Organizacao organizacao;
     @ManyToOne
-    @JoinColumn(name = "user", referencedColumnName = "id", nullable = false)
-    public User user;
+    @JoinColumn(name = "usuario", referencedColumnName = "id", nullable = false)
+    public Usuario usuario;
 }

@@ -9,11 +9,11 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Table(name = "usuario")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
@@ -22,9 +22,9 @@ public class User {
     @OneToOne
     @JoinColumn(name = "foto_perfil", referencedColumnName = "id", unique = true, nullable = true)
     private Foto foto_perfil;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public List<Organizadores> eventosOrganizados;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public List<Proprietarios> organizacoes;
     @OneToOne
     @JoinColumn(name = "contatos", referencedColumnName = "id", unique = true, nullable = true)

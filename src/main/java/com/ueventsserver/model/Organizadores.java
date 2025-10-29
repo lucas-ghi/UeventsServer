@@ -18,8 +18,8 @@ public class Organizadores {
     @JoinColumn(name = "evento", referencedColumnName = "id", nullable = false)
     public Evento evento;
     @ManyToOne
-    @JoinColumn(name = "user", referencedColumnName = "id", nullable = true)
-    public User user;
+    @JoinColumn(name = "usuario", referencedColumnName = "id", nullable = true)
+    public Usuario usuario;
     @ManyToOne
     @JoinColumn(name = "organizacao", referencedColumnName = "id", nullable = true)
     public Organizacao organizacao;

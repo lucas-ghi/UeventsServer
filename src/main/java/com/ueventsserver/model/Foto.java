@@ -15,4 +15,10 @@ public class Foto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
     public String foto;
+    @ManyToOne
+    @JoinColumn(name="evento", referencedColumnName = "id", nullable = true)
+    public Evento evento;
+    @ManyToOne
+    @JoinColumn(name="organizacao", referencedColumnName = "id", nullable = true)
+    public Organizacao organizacao;
 }

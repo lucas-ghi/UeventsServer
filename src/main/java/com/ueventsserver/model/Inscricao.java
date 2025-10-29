@@ -18,8 +18,8 @@ public class Inscricao {
     @JoinColumn(name = "evento", referencedColumnName = "id", nullable = false)
     public Evento evento;
     @ManyToOne
-    @JoinColumn(name = "user", referencedColumnName = "id", nullable = false)
-    public User user;
+    @JoinColumn(name = "usuario", referencedColumnName = "id", nullable = false)
+    public Usuario usuario;
     public boolean presenca;
     public boolean interesse;
     public boolean nao_foi;
