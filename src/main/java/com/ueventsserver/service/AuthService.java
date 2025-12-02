@@ -23,13 +23,12 @@ public class AuthService {
         Instant now = Instant.now();
 
         JwtClaimsSet claims = JwtClaimsSet.builder()
-                .issuer("UEventsServer") // Quem emitiu o token
+                .issuer("UEventsServer")
                 .issuedAt(now)
-                .expiresAt(now.plus(1, ChronoUnit.HOURS)) // Expira em 1 hora
-                .subject(authentication.getName()) // O username
+                .expiresAt(now.plus(1, ChronoUnit.HOURS))
+                .subject(authentication.getName())
                 .build();
 
-        // 3. Codifica e assina o token com a chave privada
         return this.encoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
     }
 }

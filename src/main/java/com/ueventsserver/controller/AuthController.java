@@ -25,16 +25,12 @@ public class AuthController {
     @PostMapping("/login")
     public LoginResponseDTO login(@RequestBody LoginRequestDTO loginRequest) {
 
-        // 1. Tenta autenticar o usuário
-        // Isso usa o UserDetailsService e o PasswordEncoder configurados no SecurityConfig
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
         );
 
-        // 2. Se a autenticação for bem-sucedida, gera o token
         String token = authService.generateToken(authentication);
 
-        // 3. Retorna o token para o cliente
         return LoginResponseDTO.builder()
                 .token(token)
                 .build();

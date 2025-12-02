@@ -18,6 +18,9 @@ import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -30,8 +33,10 @@ public class SecurityConfig {
 
     @Bean
     public JwtEncoder jwtEncoder() {
-        JWK jwk = new RSAKey.Builder(rsaKeys.getPublicKey())
-                .privateKey(rsaKeys.getPrivateKey())
+        RSAPublicKey pubKey = rsaKeys.getRsaPublicKey();
+        RSAPrivateKey privKey = rsaKeys.getRsaPrivateKey();
+        JWK jwk = new RSAKey.Builder(pubKey)
+                .privateKey(privKey)
                 .build();
         JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
         return new NimbusJwtEncoder(jwks);
