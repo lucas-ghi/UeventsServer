@@ -19,6 +19,7 @@ public class Usuario {
     public int id;
     public String nome;
     public String descriao;
+    public String senha;
     @OneToOne
     @JoinColumn(name = "foto_perfil", referencedColumnName = "id", unique = true, nullable = true)
     private Foto foto_perfil;
